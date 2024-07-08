@@ -1,5 +1,5 @@
 import unittest
-from solution import Solution  # Ensure this line correctly imports Solution from solution.py
+from solution1 import Solution  # Ensure this line correctly imports Solution from solution.py
 
 class TestMaxProfit(unittest.TestCase):
     def setUp(self):
