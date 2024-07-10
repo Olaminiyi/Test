@@ -5,7 +5,11 @@
 
 # Input: [2, 3, -2, 4]
 # output: 6
-# Explanation: [2,3] has the largest product
+# Explanation: [2,3] has the largest produc
+# To get the maximum product sub array. we set two values because of negative values.
+# when we multiply our the values in our array without zero or a -ve value,we can easily get the maximum.  
+# but  if their is a -ve or a zero element in the array, it will affect it by changing the multiplicated values into 
+# -ve value and zero respectively. if we have even -ve entry is good depending on where the -ve is  
 
 
 from typing import List 
@@ -45,15 +49,15 @@ from typing import List
 
 class Solution:
     def maxProductSubArray(self, nums: List[int]) -> int:
-        B = nums[::-1] # reversed the nums array
+        nums_reversed = nums[::-1] # reversed the nums array
 
         for x in range(1,len(nums)):
             if nums[x - 1] != 0:
                 nums[x] *= nums[x - 1]
 
-            if B[x-1] != 0:
-                 B[x] *= B[x-1]
-        return max(nums + B)
+            if nums_reversed[x-1] != 0:
+                 nums_reversed[x] *= nums_reversed[x-1]
+        return max(nums + nums_reversed)
     
     
 # class Solution:
