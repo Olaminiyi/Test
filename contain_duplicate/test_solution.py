@@ -1,7 +1,7 @@
 
 import unittest
 
-from solution import Solution
+from solution1 import Solution
 
 class TestContainsDuplicate(unittest.TestCase):
     def setUp(self):
