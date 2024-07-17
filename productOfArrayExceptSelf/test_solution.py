@@ -1,7 +1,7 @@
 
 
 import unittest
-from solution import Solution 
+from solution2 import Solution 
 
 class TestProductExceptSelf(unittest.TestCase):
 
