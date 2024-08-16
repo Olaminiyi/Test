@@ -52,7 +52,7 @@
 # what we need is the value not the keys.
 # so we append the value to the results which is an empty list
 
-# so we iterate over anagram_map values and append them to result
+# so we iterate over anagram_map values and append them to result..
 
 from collections import defaultdict
 from typing import List
