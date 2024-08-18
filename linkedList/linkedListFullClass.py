@@ -94,6 +94,26 @@ class linkedList:
             currentNode = currentNode.nextNode
             count += 1
 
+    def insert_at(self, index, value):
+        if index<0 or index > self.get_length():
+            raise Exception("Invalid Index")
+        
+        if index==0:
+            self.insert_at_begining(value)
+            return
+        
+        count = 0
+        currentNode = self.head
+        while currentNode:
+            if count == index - 1:
+                node = linkedListNode(value, currentNode.nextNode)
+                currentNode.nextNode = node
+                break
+
+            currentNode = currentNode.nextNode
+            count += 1
+        
+
 
 
 
@@ -103,8 +123,8 @@ ll.printLinkedList()
 print(ll.get_length())
 ll.remove_at(3)
 ll.printLinkedList()
-# ll.insert("44")
-# ll.printLinkedList()
+ll.insert_at(2, "temi")
+ll.printLinkedList()
 # ll.insert("55")
 # ll.printLinkedList()
 # ll.insert_at_end("90")
