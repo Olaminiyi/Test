@@ -113,18 +113,34 @@ class linkedList:
             currentNode = currentNode.nextNode
             count += 1
         
+    def insert_after_value (self, data_after, data_to_insert):
+        
+        currentNode = self.head
+        while currentNode:
 
+            if currentNode.value == data_after:
+                newNode = linkedListNode(data_to_insert)
+                newNode.nextNode = currentNode.nextNode
+                currentNode.nextNode = newNode
+                break
+
+            currentNode = currentNode.nextNode
+
+        #raise ValueError(f"Value {data_after} not found in the list")  
 
 
 
 ll = linkedList()
-ll.insert_values(["banan", "mango", "grapes", "orange"])
+ll.insert_values(["banana", "mango", "grapes", "orange","tangerine"])
 ll.printLinkedList()
 print(ll.get_length())
-ll.remove_at(3)
+ll.insert_after_value("mango","agbalumo")
 ll.printLinkedList()
-ll.insert_at(2, "temi")
-ll.printLinkedList()
+
+# ll.remove_at(3)
+# ll.printLinkedList()
+# ll.insert_at(2, "temi")
+# ll.printLinkedList()
 # ll.insert("55")
 # ll.printLinkedList()
 # ll.insert_at_end("90")
