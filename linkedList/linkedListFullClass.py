@@ -114,34 +114,56 @@ class linkedList:
             count += 1
         
     def insert_after_value (self, data_after, data_to_insert):
+        if self.head is None:
+            return
         
         currentNode = self.head
+        # Traverse the list until you find the node with value data_after
         while currentNode:
 
             if currentNode.value == data_after:
+        # When you find the node, create a new node with data_to_insert
                 newNode = linkedListNode(data_to_insert)
+        # Set the new node's nextNode to currentNode's nextNode
                 newNode.nextNode = currentNode.nextNode
+        # Link the currentNode's nextNode to the new node
                 currentNode.nextNode = newNode
                 break
-
+        # Move to the next node in the list            
             currentNode = currentNode.nextNode
 
         #raise ValueError(f"Value {data_after} not found in the list")  
+
+    def remove_by_value(self, data):
+     if self.head is None:
+         return
+     
+     if self.head.value == data:
+         self.head = self.head.nextNode
+         return
+     
+     currentNode = self.head
+     while currentNode.nextNode:
+         if currentNode.nextNode.value == data:
+             currentNode.nextNode = currentNode.nextNode.nextNode
+             break
+         currentNode = currentNode.nextNode
 
 
 
 ll = linkedList()
 ll.insert_values(["banana", "mango", "grapes", "orange","tangerine"])
 ll.printLinkedList()
-print(ll.get_length())
-ll.insert_after_value("mango","agbalumo")
-ll.printLinkedList()
-
+# print(ll.get_length())
+# ll.insert_after_value("mango","agbalumo")
+# ll.printLinkedList()
+# ll.remove_by_value("mango")
+# ll.printLinkedList()
 # ll.remove_at(3)
 # ll.printLinkedList()
 # ll.insert_at(2, "temi")
 # ll.printLinkedList()
-# ll.insert("55")
+# ll.insert(["55","56"])
 # ll.printLinkedList()
 # ll.insert_at_end("90")
 # ll.printLinkedList()
