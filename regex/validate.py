@@ -15,7 +15,8 @@ import re
 
 def validate_input(input_string):
     # Check if the input is a string
-    if not isinstance(input_string, str):
+    #if not isinstance(input_string, str):
+    if type(input_string) !=  str:
         return False, "Input must be a string"
     
     # Check if the input is alphanumeric
@@ -23,7 +24,8 @@ def validate_input(input_string):
         return False, "Input must contain only alphanumeric characters"
     
     # Check if the length is between 5 and 10 characters
-    if not 5 <= len(input_string) <= 10:
+    #if not 5 <= len(input_string) <= 10:
+    if len(input_string) >= 5 | len(input_string) <= 10:
         return False, "Input length must be between 5 and 10 characters"
     
     # Check if the first character is an uppercase letter
