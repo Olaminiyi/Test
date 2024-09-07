@@ -1,4 +1,4 @@
-import re
+<!-- import re
 from collections import defaultdict
 
 # Sample log data
@@ -26,4 +26,36 @@ for line in log_data.strip().split('\n'):
 for server_ip, codes in server_response_count.items():
     print(f"Server IP: {server_ip}")
     for code, count in codes.items():
-        print(f"  Response Code {code}: {count} times")
+        print(f"  Response Code {code}: {count} times") -->
+
+
+import re
+from collections import defaultdict
+
+# Sample data content
+data = """
+12:10:10 serverIP: 10.3.4.5 UIR /home/website responseCode 400 TTL : 2200
+12:10:10 serverIP: 10.3.4.4 UIR /home/website responseCode 200 TTL : 2000
+12:10:10 serverIP: 10.3.4.5 UIR /home/website responseCode 400 TTL : 2000
+"""
+
+# Regular expression to extract serverIP and responseCode
+log_pattern = re.compile(r'serverIP: (?P<server_ip>\d+\.\d+\.\d+\.\d+).*responseCode (?P<response_code>\d+)')
+
+
+
+# Create a defaultdict where the key is a tuple of (server_ip, response_code)
+server_response_count = defaultdict(int)
+
+# Process each line in the data
+for line in data.strip().split('\n'):
+    match = log_pattern.search(line)
+    if match:
+        server_ip = match.group('server_ip')
+        response_code = match.group('response_code')
+        # Increment the count for this (server_ip, response_code) tuple
+        server_response_count[(server_ip, response_code)] += 1
+
+# Print out the counts
+for (server_ip, response_code), count in server_response_count.items():
+    print(f"Server IP: {server_ip}, Response Code: {response_code}, Count: {count}")
